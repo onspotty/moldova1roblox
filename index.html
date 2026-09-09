@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moldova 1 Roblox</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
+<meta property="og:site_name" content="Moldova 1 Roblox">
+<meta property="og:title" content="Moldova 1 Roblox">
+<meta property="og:image" content="https://moldova1rblx.netlify.app/og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="616">
+<meta property="og:url" content="https://moldova1rblx.netlify.app/">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Moldova 1 Roblox">
+<meta name="twitter:image" content="https://moldova1rblx.netlify.app/og-banner.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue: #1B4DE4;
+    --bg-top: #F4F6FE;
+    --bg-bottom: #FFFFFF;
+    --text: #3A3D46;
+    --text-muted: #6B6E78;
+    --border: #E7E9F2;
+  }
+
+  * { box-sizing: border-box; }
+
+  body { margin: 0; font-family: 'Onest', sans-serif; }
+
+  header {
+    background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .row {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 44px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .logo .brand-mark {
+    height: 40px;
+    width: auto;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  nav a {
+    position: relative;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding-bottom: 8px;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: #9CA0AC;
+    transform: scaleX(0);
+    transform-origin: center;
+  }
+
+  nav a:hover::after { transform: scaleX(1); }
+
+  nav a.live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  nav a.live .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+  }
+
+  .search-wrap {
+    margin-left: auto;
+    position: relative;
+    width: 320px;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #FFFFFF;
+  }
+
+  .search svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .search input {
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    width: 100%;
+    background: transparent;
+  }
+
+  .search input::placeholder { color: var(--text-muted); }
+
+  main.results {
+    display: none;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 32px 64px;
+  }
+
+  main.results.open { display: block; }
+
+  main.results h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #10182B;
+    margin: 0 0 28px;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .result-card {
+    display: block;
+    text-decoration: none;
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .result-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9.4;
+    object-fit: cover;
+    background: var(--bg-top);
+  }
+
+  .result-card .body { padding: 16px 18px 18px; }
+
+  .result-card .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #10182B;
+    line-height: 1.35;
+    margin: 0 0 12px;
+  }
+
+  .result-card .date {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .no-results {
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 36px;
+    padding-top: 22px;
+    border-top: 1px solid var(--border);
+  }
+
+  .page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .page-numbers a {
+    position: relative;
+    color: var(--text-muted);
+    font-size: 14px;
+    text-decoration: none;
+    padding-bottom: 10px;
+  }
+
+  .page-numbers a:hover { color: var(--text); }
+
+  .page-numbers a.active {
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  .page-numbers a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--blue);
+  }
+
+  .next-link {
+    position: absolute;
+    right: 0;
+    top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .next-link svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .next-link:hover { color: var(--blue); }
+
+  .next-link.disabled {
+    color: var(--border);
+    pointer-events: none;
+  }
+
+  .prev-link {
+    position: absolute;
+    left: 0;
+    top: 22px;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .prev-link.visible { display: inline-flex; }
+
+  .prev-link svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .prev-link:hover { color: var(--blue); }
+
+  @media (max-width: 900px) {
+    .results-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .results-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 760px) {
+    .row { flex-wrap: wrap; gap: 16px; padding: 14px 20px; }
+    nav { gap: 18px; order: 3; width: 100%; }
+    .search-wrap { width: 100%; order: 2; margin-left: 0; }
+  }
+
+  .article-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  #article-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 14px;
+    text-decoration: none;
+    margin-bottom: 28px;
+  }
+
+  #article-back:hover { color: var(--blue); }
+
+  #article-back svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .editor-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .editor-back:hover { color: var(--blue); }
+
+  #article-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #10182B;
+    line-height: 1.32;
+    margin: 0 0 12px;
+  }
+
+  #article-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0 0 26px;
+  }
+
+  #article-image {
+    display: block;
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 28px;
+    background: var(--bg-top);
+  }
+
+  #article-body p {
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #2E3140;
+    margin: 0 0 18px;
+  }
+
+  .editor-link {
+    display: inline-block;
+    margin-top: 22px;
+    font-size: 12.5px;
+    color: var(--border);
+  }
+
+  .editor-link:hover { color: var(--text-muted); }
+
+  .form-group {
+    margin-bottom: 18px;
+    text-align: left;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--text);
+    background: #FFFFFF;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.5;
+  }
+
+  .form-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .form-btn {
+    display: inline-block;
+    background: var(--blue);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 22px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .form-btn:hover { opacity: 0.9; }
+
+  .form-btn.secondary {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .form-status {
+    margin-top: 14px;
+    font-size: 13.5px;
+  }
+
+  .form-status.error { color: #C0392B; }
+  .form-status.success { color: #1E8E3E; }
+
+  .editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  .editor-header span {
+    font-size: 13.5px;
+    color: var(--text-muted);
+  }
+
+  hr.form-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  footer {
+    background: #FFFFFF;
+    border-top: 1px solid var(--border);
+    padding: 48px 32px 40px;
+    text-align: center;
+  }
+
+  footer img.foot-logo {
+    height: 42px;
+    width: auto;
+    margin-bottom: 22px;
+  }
+
+  footer .disclaimer {
+    max-width: 640px;
+    margin: 0 auto 32px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  footer .copyright {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  footer .lang-links {
+    display: flex;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  footer .lang-links a {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+
+  footer .lang-links a:hover { color: #10182B; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="row">
+    <a href="#" class="logo" id="logo-link">
+      <svg class="brand-mark" width="115" height="101" viewBox="0 0 115 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.42999 91.6101L4.24998 84.6401H0.0499878V99.9701H3.57999V89.8201L7.62998 96.4901H9.09998L13.11 89.8201V99.9701H16.64V84.6401H12.57L8.42999 91.6101Z" fill="#1745B8"/>
+        <path d="M32.87 86.58C32.2 85.9 31.39 85.37 30.45 85C29.51 84.63 28.45 84.45 27.28 84.45C26.11 84.45 25.05 84.6399 24.1 85.0099C23.15 85.3899 22.34 85.92 21.67 86.61C21 87.3 20.48 88.13 20.11 89.09C19.74 90.05 19.56 91.13 19.56 92.28C19.56 93.43 19.74 94.49 20.09 95.45C20.44 96.41 20.95 97.2399 21.62 97.9299C22.28 98.6299 23.09 99.1599 24.03 99.5399C24.98 99.9199 26.05 100.11 27.25 100.11C28.43 100.12 29.5 99.94 30.45 99.55C31.4 99.16 32.21 98.61 32.88 97.91C33.55 97.21 34.07 96.3599 34.43 95.3999C34.79 94.4299 34.97 93.39 34.97 92.22C34.97 91.05 34.79 89.9899 34.43 89.0399C34.06 88.0799 33.54 87.26 32.87 86.58ZM31.1 93.97C30.94 94.52 30.7 95.01 30.36 95.44C30.03 95.87 29.61 96.2199 29.11 96.4799C28.6 96.7399 28 96.8699 27.31 96.8699C26.59 96.8599 25.97 96.72 25.45 96.46C24.93 96.2 24.5 95.8599 24.16 95.4299C23.82 95.0099 23.57 94.52 23.4 93.97C23.23 93.42 23.15 92.8499 23.15 92.2599H23.14C23.14 91.6799 23.22 91.12 23.39 90.57C23.56 90.02 23.8 89.54 24.14 89.11C24.47 88.69 24.9 88.34 25.42 88.08C25.94 87.82 26.54 87.69 27.26 87.69C27.98 87.69 28.6 87.83 29.11 88.1C29.62 88.37 30.05 88.73 30.38 89.16C30.71 89.59 30.95 90.08 31.11 90.63C31.26 91.18 31.34 91.74 31.34 92.3C31.34 92.86 31.26 93.42 31.1 93.97Z" fill="#1745B8"/>
+        <path d="M41.39 84.6401H37.86V99.9701H48.82V96.7901H41.39V84.6401Z" fill="#1745B8"/>
+        <path d="M63.35 86.5901C62.68 85.9401 61.8599 85.4501 60.8999 85.1301C59.9399 84.8001 58.86 84.6401 57.66 84.6401H51.83V99.9701H57.74C60.22 99.9701 62.13 99.3301 63.45 98.0301C64.77 96.7401 65.4299 94.8301 65.4299 92.3001C65.4299 91.0501 65.25 89.9401 64.89 88.9901C64.54 88.0401 64.02 87.2401 63.35 86.5901ZM61.63 94.1701C61.48 94.7201 61.25 95.1901 60.92 95.5801C60.6 95.9701 60.18 96.2701 59.67 96.4801C59.16 96.6901 58.53 96.8001 57.8 96.8001H55.38V87.8801H57.63C59.07 87.8801 60.14 88.2601 60.82 89.0101C61.51 89.7601 61.85 90.8701 61.85 92.3401C61.84 93.0001 61.77 93.6201 61.63 94.1701Z" fill="#1745B8"/>
+        <path d="M81.43 86.58C80.76 85.9 79.95 85.37 79.01 85C78.06 84.63 77.01 84.45 75.84 84.45H75.85C74.68 84.45 73.62 84.6399 72.67 85.0099C71.72 85.3899 70.91 85.92 70.23 86.61C69.56 87.3 69.04 88.13 68.67 89.09C68.3 90.05 68.12 91.13 68.12 92.28C68.12 93.43 68.3 94.49 68.65 95.45C69 96.41 69.51 97.2399 70.18 97.9299C70.84 98.6299 71.65 99.1599 72.59 99.5399C73.53 99.9199 74.61 100.11 75.81 100.11C76.99 100.12 78.07 99.94 79.01 99.55C79.96 99.16 80.77 98.61 81.45 97.91C82.13 97.21 82.64 96.3599 83 95.3999C83.36 94.4299 83.54 93.39 83.54 92.22C83.54 91.05 83.36 89.9899 83 89.0399C82.62 88.0799 82.1 87.26 81.43 86.58ZM79.66 93.97C79.5 94.52 79.26 95.01 78.92 95.44C78.59 95.87 78.17 96.2199 77.67 96.4799C77.16 96.7399 76.56 96.8699 75.87 96.8699C75.15 96.8599 74.53 96.72 74.01 96.46C73.49 96.2 73.06 95.8599 72.72 95.4299C72.38 95.0099 72.13 94.52 71.96 93.97C71.79 93.42 71.71 92.8499 71.71 92.2599H71.7C71.7 91.6799 71.78 91.12 71.95 90.57C72.12 90.02 72.36 89.54 72.7 89.11C73.03 88.69 73.46 88.34 73.98 88.08C74.5 87.82 75.1 87.69 75.82 87.69C76.54 87.69 77.16 87.83 77.67 88.1C78.18 88.37 78.61 88.73 78.94 89.16C79.27 89.59 79.51 90.08 79.67 90.63C79.82 91.18 79.9 91.74 79.9 92.3C79.9 92.86 79.82 93.42 79.66 93.97Z" fill="#1745B8"/>
+        <path d="M96.2 84.6401L92.37 95.5501L88.43 84.6401H84.55L90.51 99.9701H94.06L100.03 84.6401H96.2Z" fill="#1745B8"/>
+        <path d="M108.46 84.6401H104.69L98.65 99.9701H102.46L103.39 97.4401H109.67L110.58 99.9701H114.41L108.46 84.6401ZM104.48 94.2801L106.56 88.5001L108.59 94.2801H104.48Z" fill="#1745B8"/>
+        <path d="M81.48 69.9001V15.8501H66.04L40.78 41.1201L15.49 15.8701L0.0499878 15.8501V69.9001H15.49V37.6701L40.78 62.9601V62.9501V62.9601L66.04 37.6901V69.9001H81.48Z" fill="#1745B8"/>
+        <path d="M96.93 69.9H112.37V0.410034H96.93L81.48 15.85H96.93V69.9Z" fill="#1745B8"/>
+      </svg>
+    </a>
+
+    <nav id="main-nav">
+      <a href="#" id="nav-news">Știri</a>
+    </nav>
+
+    <div class="search-wrap">
+      <div class="search">
+        <svg id="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input" placeholder="Caută" autocomplete="off">
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="results open" id="home-feed">
+  <h1 id="home-heading">Ultimele știri</h1>
+  <div class="results-grid" id="home-grid"></div>
+  <div class="pagination">
+    <a href="#" class="prev-link" id="prev-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span id="prev-label">Precedenta</span>
+    </a>
+    <div class="page-numbers" id="page-numbers"></div>
+    <a href="#" class="next-link" id="next-link">
+      <span id="next-label">Următoarea</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  </div>
+</main>
+
+<main class="results" id="results-section">
+  <h1 id="results-heading">Rezultatele căutării</h1>
+  <div class="results-grid" id="results-grid"></div>
+</main>
+
+<main class="results" id="article-view">
+  <div class="article-wrap">
+    <a href="#" id="article-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      <span id="article-back-label">Înapoi</span>
+    </a>
+    <h1 id="article-title"></h1>
+    <p id="article-meta"></p>
+    <img id="article-image" src="" alt="">
+    <div id="article-body"></div>
+  </div>
+</main>
+
+<main class="results" id="login-view">
+  <div class="article-wrap" style="max-width:420px;">
+    <a href="#" class="editor-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;">
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back to site
+    </a>
+    <h1 style="font-size:22px;margin-top:20px;">Editor login</h1>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" required>
+      </div>
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" required>
+      </div>
+      <button type="submit" class="form-btn">Log in</button>
+      <p class="form-status" id="login-status"></p>
+    </form>
+  </div>
+</main>
+
+<main class="results" id="editor-view">
+  <div class="article-wrap" style="max-width:620px;">
+    <div class="editor-header">
+      <span id="editor-whoami"></span>
+      <button type="button" class="form-btn secondary" id="logout-btn">Log out</button>
+    </div>
+
+    <h1 style="font-size:22px;">Add new article</h1>
+
+    <form id="add-article-form">
+      <div class="form-group">
+        <label>Title — Română</label>
+        <input type="text" id="af-title-ro" required>
+      </div>
+      <div class="form-group">
+        <label>Title — English</label>
+        <input type="text" id="af-title-en" required>
+      </div>
+      <div class="form-group">
+        <label>Title — Русский</label>
+        <input type="text" id="af-title-ru" required>
+      </div>
+
+      <div class="form-group">
+        <label>Date</label>
+        <input type="text" id="af-date" placeholder="DD.MM.YYYY" required>
+      </div>
+
+      <div class="form-group">
+        <label>Image URL</label>
+        <input type="url" id="af-image" placeholder="https://..." required>
+      </div>
+
+      <div class="form-group">
+        <label>Content — Română</label>
+        <textarea id="af-content-ro" required></textarea>
+        <p class="form-hint">Separate paragraphs with a blank line.</p>
+      </div>
+      <div class="form-group">
+        <label>Content — English</label>
+        <textarea id="af-content-en" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Content — Русский</label>
+        <textarea id="af-content-ru" required></textarea>
+      </div>
+
+      <button type="submit" class="form-btn">Publish article</button>
+      <p class="form-status" id="publish-status"></p>
+    </form>
+  </div>
+</main>
+
+<footer>
+  <img class="foot-logo" src="moldova-roblox-logo.png" alt="Republic of Moldova Roblox">
+  <p class="disclaimer" id="footer-disclaimer">
+    Acesta este un site fictiv, creat pentru proiectul de comunitate Republic of Moldova pe Roblox.
+    Nu este un canal media real și nu are nicio legătură cu vreo instituție sau post de televiziune existent.
+  </p>
+  <p class="copyright" id="footer-copyright">© 2026 Republic of Moldova Roblox. Toate drepturile rezervate.</p>
+  <div class="lang-links">
+    <a href="#" data-lang="ro">Română</a>
+    <a href="#" data-lang="ru">Русский</a>
+    <a href="#" data-lang="en">English</a>
+  </div>
+  <a href="#" class="editor-link" id="editor-link">Log In as editor</a>
+</footer>
+
+<script type="module">
+  // ============================================================
+  // FIREBASE SETUP — paste your config from the Firebase Console
+  // (Project settings → your web app → SDK setup and config)
+  // ============================================================
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js';
+  import {
+    getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
+  } from 'https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js';
+  import {
+    getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp
+  } from 'https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js';
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyBHHUtlR7w7CiFMbcJkg2smW7bINsYK4Os",
+    authDomain: "moldova-1-roblox.firebaseapp.com",
+    projectId: "moldova-1-roblox",
+    storageBucket: "moldova-1-roblox.firebasestorage.app",
+    messagingSenderId: "323202917983",
+    appId: "1:323202917983:web:bc0bdb51de8f8e627a5dea"
+  };
+
+  var firebaseApp = initializeApp(firebaseConfig);
+  var auth = getAuth(firebaseApp);
+  var db = getFirestore(firebaseApp);
+
+  // ============================================================
+  // DISCORD WEBHOOK — paste your webhook URL below.
+  // Discord server → Server Settings → Integrations → Webhooks →
+  // New Webhook → pick a channel → Copy Webhook URL.
+  // Note: this URL is public in the page source, so anyone could
+  // technically find it and post to your channel. Fine for a small
+  // community project; just know it's not a private secret here.
+  // ============================================================
+  var DISCORD_WEBHOOK_URL = "PASTE_YOUR_DISCORD_WEBHOOK_URL_HERE";
+
+  var input = document.getElementById('search-input');
+  var searchIcon = document.getElementById('search-icon');
+  var homeFeed = document.getElementById('home-feed');
+  var homeGrid = document.getElementById('home-grid');
+  var resultsSection = document.getElementById('results-section');
+  var resultsGrid = document.getElementById('results-grid');
+  var logoLink = document.getElementById('logo-link');
+  var navNews = document.getElementById('nav-news');
+  var pageNumbers = document.getElementById('page-numbers');
+  var nextLink = document.getElementById('next-link');
+  var nextLabel = document.getElementById('next-label');
+  var prevLink = document.getElementById('prev-link');
+  var prevLabel = document.getElementById('prev-label');
+  var articleView = document.getElementById('article-view');
+  var articleBack = document.getElementById('article-back');
+  var articleBackLabel = document.getElementById('article-back-label');
+  var articleTitle = document.getElementById('article-title');
+  var articleMeta = document.getElementById('article-meta');
+  var articleImage = document.getElementById('article-image');
+  var articleBody = document.getElementById('article-body');
+
+  var editorLink = document.getElementById('editor-link');
+  var loginView = document.getElementById('login-view');
+  var editorView = document.getElementById('editor-view');
+  var loginForm = document.getElementById('login-form');
+  var loginStatus = document.getElementById('login-status');
+  var logoutBtn = document.getElementById('logout-btn');
+  var editorWhoami = document.getElementById('editor-whoami');
+  var addArticleForm = document.getElementById('add-article-form');
+  var publishStatus = document.getElementById('publish-status');
+
+  var articlesById = {};
+  var currentUser = null;
+
+  var currentArticle = null;
+  var lastView = 'home';
+
+  var itemsPerPage = 6;
+  var currentPage = 1;
+  var articles = [];
+
+  // ---- Translations ----
+  // UI text only — article titles/dates/content now come from Firestore (live, shared data).
+  var translations = {
+    ro: {
+      nav_news: 'Știri',
+      search_placeholder: 'Caută',
+      home_heading: 'Ultimele știri',
+      results_heading: 'Rezultatele căutării',
+      no_results: 'Niciun rezultat pentru „{q}”',
+      next: 'Următoarea',
+      prev: 'Precedenta',
+      back: 'Înapoi',
+      published: 'Publicat',
+      disclaimer: 'Acesta este un site fictiv, creat pentru proiectul de comunitate Republic of Moldova pe Roblox. Nu este un canal media real și nu are nicio legătură cu vreo instituție sau post de televiziune existent.',
+      copyright: '© 2026 Republic of Moldova Roblox. Toate drepturile rezervate.'
+    },
+    en: {
+      nav_news: 'News',
+      search_placeholder: 'Search',
+      home_heading: 'Latest news',
+      results_heading: 'Search results',
+      no_results: 'No results for "{q}"',
+      next: 'Next',
+      prev: 'Previous',
+      back: 'Back',
+      published: 'Published',
+      disclaimer: 'This is a fictional website, created for the Republic of Moldova Roblox community project. It is not a real media channel and has no connection to any existing institution or television station.',
+      copyright: '© 2026 Republic of Moldova Roblox. All rights reserved.'
+    },
+    ru: {
+      nav_news: 'Новости',
+      search_placeholder: 'Поиск',
+      home_heading: 'Последние новости',
+      results_heading: 'Результаты поиска',
+      no_results: 'Нет результатов по запросу «{q}»',
+      next: 'Следующая',
+      prev: 'Предыдущая',
+      back: 'Назад',
+      published: 'Опубликовано',
+      disclaimer: 'Это вымышленный сайт, созданный для проекта сообщества Republic of Moldova в Roblox. Это не настоящий медиаканал и не имеет отношения к каким-либо существующим учреждениям или телеканалам.',
+      copyright: '© 2026 Republic of Moldova Roblox. Все права защищены.'
+    }
+  };
+
+  var currentLang = 'ro';
+
+  function setLanguage(lang) {
+    currentLang = translations[lang] ? lang : 'ro';
+    var t = translations[currentLang];
+
+    document.getElementById('nav-news').textContent = t.nav_news;
+    input.placeholder = t.search_placeholder;
+    document.getElementById('home-heading').textContent = t.home_heading;
+    document.getElementById('results-heading').textContent = t.results_heading;
+    document.getElementById('footer-disclaimer').textContent = t.disclaimer;
+    document.getElementById('footer-copyright').textContent = t.copyright;
+    nextLabel.textContent = t.next;
+    prevLabel.textContent = t.prev;
+    articleBackLabel.textContent = t.back;
+    document.documentElement.lang = currentLang;
+
+    document.querySelectorAll('.lang-links a').forEach(function (a) {
+      a.classList.toggle('active', a.dataset.lang === currentLang);
+    });
+
+    // Re-render whatever's currently visible so article titles switch language too.
+    renderHome();
+    if (resultsSection.classList.contains('open')) runSearch();
+    if (articleView.classList.contains('open') && currentArticle) renderArticle(currentArticle);
+  }
+
+  document.querySelectorAll('.lang-links a').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      setLanguage(a.dataset.lang);
+    });
+  });
+
+  function cardHTML(item) {
+    return '<a class="result-card" href="#" data-id="' + item.id + '">' +
+      '<img src="' + item.image + '" alt="">' +
+      '<div class="body">' +
+        '<p class="title">' + item.title[currentLang] + '</p>' +
+        '<span class="date">' + item.date + '</span>' +
+      '</div>' +
+    '</a>';
+  }
+
+  function renderArticle(item) {
+    currentArticle = item;
+    articleTitle.textContent = item.title[currentLang];
+    articleMeta.textContent = translations[currentLang].published + ' ' + item.date;
+    articleImage.src = item.image;
+    articleImage.alt = item.title[currentLang];
+    articleBody.innerHTML = item.content[currentLang].map(function (p) {
+      return '<p>' + p + '</p>';
+    }).join('');
+  }
+
+  function renderArticleView(item) {
+    lastView = resultsSection.classList.contains('open') ? 'results' : 'home';
+    homeFeed.classList.remove('open');
+    resultsSection.classList.remove('open');
+    renderArticle(item);
+    articleView.classList.add('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function openArticle(item) {
+    renderArticleView(item);
+    history.pushState({ articleId: item.id }, '', '?article=' + item.id);
+  }
+
+  function closeArticle() {
+    articleView.classList.remove('open');
+    if (lastView === 'results') {
+      resultsSection.classList.add('open');
+    } else {
+      homeFeed.classList.add('open');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.pushState({}, '', window.location.pathname);
+  }
+
+  window.addEventListener('popstate', function () {
+    var params = new URLSearchParams(window.location.search);
+    var id = params.get('article');
+    if (id && articlesById[id]) {
+      renderArticleView(articlesById[id]);
+    } else {
+      articleView.classList.remove('open');
+      resultsSection.classList.remove('open');
+      homeFeed.classList.add('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest('.result-card');
+    if (card) {
+      e.preventDefault();
+      var article = articlesById[card.dataset.id];
+      if (article) openArticle(article);
+    }
+  });
+
+  articleBack.addEventListener('click', function (e) {
+    e.preventDefault();
+    closeArticle();
+  });
+
+  function renderHome() {
+    var totalPages = Math.max(1, Math.ceil(articles.length / itemsPerPage));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    var start = (currentPage - 1) * itemsPerPage;
+    var pageItems = articles.slice(start, start + itemsPerPage);
+    homeGrid.innerHTML = pageItems.map(cardHTML).join('');
+
+    pageNumbers.innerHTML = '';
+    for (var i = 1; i <= totalPages; i++) {
+      var a = document.createElement('a');
+      a.href = '#';
+      a.textContent = i;
+      if (i === currentPage) a.classList.add('active');
+      (function (page) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          currentPage = page;
+          renderHome();
+          homeFeed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      })(i);
+      pageNumbers.appendChild(a);
+    }
+
+    nextLink.classList.toggle('disabled', currentPage >= totalPages);
+    prevLink.classList.toggle('visible', currentPage > 1);
+  }
+
+  prevLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (currentPage > 1) {
+      currentPage--;
+      renderHome();
+      homeFeed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  nextLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    var totalPages = Math.max(1, Math.ceil(articles.length / itemsPerPage));
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderHome();
+      homeFeed.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  function runSearch() {
+    var searchQuery = input.value.trim();
+    var q = searchQuery.toLowerCase();
+
+    if (!q) {
+      resultsSection.classList.remove('open');
+      articleView.classList.remove('open');
+      homeFeed.classList.add('open');
+      history.pushState({}, '', window.location.pathname);
+      return;
+    }
+
+    var matches = articles.filter(function (item) {
+      return item.title[currentLang].toLowerCase().indexOf(q) !== -1;
+    });
+
+    if (matches.length === 0) {
+      resultsGrid.innerHTML = '<p class="no-results">' +
+        translations[currentLang].no_results.replace('{q}', searchQuery) +
+        '</p>';
+    } else {
+      resultsGrid.innerHTML = matches.map(cardHTML).join('');
+    }
+
+    homeFeed.classList.remove('open');
+    articleView.classList.remove('open');
+    resultsSection.classList.add('open');
+    history.pushState({}, '', window.location.pathname);
+    resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function goHome() {
+    input.value = '';
+    currentPage = 1;
+    articleView.classList.remove('open');
+    resultsSection.classList.remove('open');
+    loginView.classList.remove('open');
+    editorView.classList.remove('open');
+    homeFeed.classList.add('open');
+    renderHome();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.pushState({}, '', window.location.pathname);
+  }
+
+  logoLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    goHome();
+  });
+
+  navNews.addEventListener('click', function (e) {
+    e.preventDefault();
+    goHome();
+  });
+
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') runSearch();
+  });
+
+  searchIcon.addEventListener('click', runSearch);
+
+  // ---- Editor login / logout ----
+
+  function showLoginView() {
+    articleView.classList.remove('open');
+    resultsSection.classList.remove('open');
+    homeFeed.classList.remove('open');
+    editorView.classList.remove('open');
+    loginView.classList.add('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showEditorView() {
+    articleView.classList.remove('open');
+    resultsSection.classList.remove('open');
+    homeFeed.classList.remove('open');
+    loginView.classList.remove('open');
+    editorView.classList.add('open');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  editorLink.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (currentUser) {
+      showEditorView();
+    } else {
+      showLoginView();
+    }
+  });
+
+  document.querySelectorAll('.editor-back').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      goHome();
+    });
+  });
+
+  loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var email = document.getElementById('login-email').value.trim();
+    var password = document.getElementById('login-password').value;
+    loginStatus.textContent = '';
+    loginStatus.className = 'form-status';
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then(function () {
+        loginForm.reset();
+      })
+      .catch(function (err) {
+        loginStatus.textContent = 'Login failed — check your email and password.';
+        loginStatus.className = 'form-status error';
+      });
+  });
+
+  logoutBtn.addEventListener('click', function () {
+    signOut(auth).then(goHome);
+  });
+
+  onAuthStateChanged(auth, function (user) {
+    currentUser = user;
+    editorLink.textContent = user ? 'Editor panel' : 'Log In as editor';
+    if (user) {
+      editorWhoami.textContent = 'Logged in as ' + user.email;
+      showEditorView();
+    }
+  });
+
+  // ---- Publishing a new article ----
+
+  var discordWebhookUrl = 'https://discord.com/api/webhooks/1546578175763419248/tV42zt7aevnXUuT_sc2Kzrx5B8JuUaJJ3WNEJHBz7PXUBZ0DfzWQ65qwdZQ7Fbt4KZpH';
+
+  function notifyDiscord(article, docId) {
+    var articleUrl = 'https://moldova1rblx.netlify.app/?article=' + docId;
+    var firstParagraph = article.content.en[0] || '';
+
+    var payload = {
+      embeds: [{
+        title: article.title.en,
+        url: articleUrl,
+        description: firstParagraph + '\n\n[Read full article on the website](' + articleUrl + ')',
+        color: 1798372,
+        image: { url: article.image },
+        footer: { text: article.date }
+      }]
+    };
+
+    fetch(discordWebhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).catch(function (err) {
+      console.error('Discord notification failed:', err);
+    });
+  }
+
+  function splitParagraphs(text) {
+    return text.split(/\n\s*\n/).map(function (p) { return p.trim(); }).filter(Boolean);
+  }
+
+  addArticleForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    publishStatus.textContent = '';
+    publishStatus.className = 'form-status';
+
+    var newArticle = {
+      title: {
+        ro: document.getElementById('af-title-ro').value.trim(),
+        en: document.getElementById('af-title-en').value.trim(),
+        ru: document.getElementById('af-title-ru').value.trim()
+      },
+      date: document.getElementById('af-date').value.trim(),
+      image: document.getElementById('af-image').value.trim(),
+      content: {
+        ro: splitParagraphs(document.getElementById('af-content-ro').value),
+        en: splitParagraphs(document.getElementById('af-content-en').value),
+        ru: splitParagraphs(document.getElementById('af-content-ru').value)
+      },
+      createdAt: serverTimestamp()
+    };
+
+    addDoc(collection(db, 'articles'), newArticle)
+      .then(function (docRef) {
+        notifyDiscord(newArticle, docRef.id);
+        addArticleForm.reset();
+        publishStatus.textContent = 'Published! It now shows on the site for everyone.';
+        publishStatus.className = 'form-status success';
+      })
+      .catch(function (err) {
+        publishStatus.textContent = 'Could not publish — ' + err.message;
+        publishStatus.className = 'form-status error';
+      });
+  });
+
+  // ---- Live article feed from Firestore ----
+  // Runs for every visitor: reads happen for everyone, writes only for logged-in editors
+  // (see the Firestore security rules). Any time an article is added, this fires again
+  // for all connected visitors and the homepage re-renders automatically.
+
+  var articlesQuery = query(collection(db, 'articles'), orderBy('createdAt', 'desc'));
+  var initialRouteHandled = false;
+
+  onSnapshot(articlesQuery, function (snapshot) {
+    articles = [];
+    articlesById = {};
+
+    snapshot.forEach(function (docSnap) {
+      var data = docSnap.data();
+      data.id = docSnap.id;
+      articles.push(data);
+      articlesById[data.id] = data;
+    });
+
+    renderHome();
+    if (resultsSection.classList.contains('open')) runSearch();
+    if (articleView.classList.contains('open') && currentArticle && articlesById[currentArticle.id]) {
+      renderArticle(articlesById[currentArticle.id]);
+    }
+
+    // If this is the first load and the URL points to a specific article
+    // (e.g. someone shared a link), open it directly.
+    if (!initialRouteHandled) {
+      initialRouteHandled = true;
+      var params = new URLSearchParams(window.location.search);
+      var sharedId = params.get('article');
+      if (sharedId && articlesById[sharedId]) {
+        renderArticleView(articlesById[sharedId]);
+      }
+    }
+  }, function (err) {
+    homeGrid.innerHTML = '<p class="no-results">Could not load articles — check your Firebase config and internet connection.</p>';
+  });
+
+  setLanguage('ro');
+</script>
+
+</body>
+</html>
